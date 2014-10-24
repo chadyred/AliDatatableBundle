@@ -87,11 +87,13 @@ class Renderer
                     $view = 'AliDatatableBundle:Renderers:_default.html.twig';
                 }
                 $params                          = array_merge($params, array(
-                    'dt_obj'  => $objects[$row_index],
+                    //I don't use it in twig but make for One To Many in controller a conflict like 'Undefined unset' 
+                    //That was not the fact in 1.4.1, when you had this line  'dt_obj'  => $objects[$row_index], so i comment it !
+                    //'dt_obj'  => $objects[$row_index],
                     'dt_item' => $data[$row_index][$column_index],
                     'dt_id'   => $identifier_raw
                         )
-                );
+                ); 'dt_obj'  => $objects[$row_index],
                 $data[$row_index][$column_index] = $this->applyView(
                         $view, $params
                 );
